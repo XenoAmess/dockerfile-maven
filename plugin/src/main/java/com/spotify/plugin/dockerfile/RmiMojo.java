@@ -76,7 +76,11 @@ public class RmiMojo extends AbstractDockerMojo {
       String imageName = formatImageName(repository, tagToRmi);
       try {
         ProcessBuilder processBuilder = new ProcessBuilder();
-        processBuilder.command("docker rmi " + imageName);
+        processBuilder.command(
+          "docker",
+          "rmi",
+          imageName
+        );
         Process process = processBuilder.start();
         int ret = process.waitFor();
         System.out.printf("Program exited with code: %d", ret);

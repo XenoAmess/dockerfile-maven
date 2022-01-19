@@ -62,7 +62,7 @@ public class ExecMojo extends AbstractDockerMojo {
     }
     try {
       ProcessBuilder processBuilder = new ProcessBuilder();
-      processBuilder.command(execCommand);
+      processBuilder.command(StringUtils.split(execCommand, ' '));
       Process process = processBuilder.start();
       int ret = process.waitFor();
       System.out.printf("Program exited with code: %d", ret);
