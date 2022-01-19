@@ -62,8 +62,27 @@ public class PushMojo extends AbstractDockerMojo {
   @Parameter(property = "dockerfile.push.skip", defaultValue = "false")
   private boolean skipPush;
 
+  /**
+   * Allow failure.
+   */
+  @Parameter(property = "dockerfile.push.failure.ignore", defaultValue = "false")
+  private boolean pushFailureIgnore;
+
   @Override
   protected void execute(DockerClient dockerClient)
+          throws MojoExecutionException, MojoFailureException {
+    if (pushFailureIgnore) {
+      try {
+        executeInternal(dockerClient);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else {
+      executeInternal(dockerClient);
+    }
+  }
+
+  protected void executeInternal(DockerClient dockerClient)
       throws MojoExecutionException, MojoFailureException {
     final Log log = getLog();
 

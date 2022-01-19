@@ -61,8 +61,27 @@ public class RemoveMojo extends AbstractDockerMojo {
   @Parameter(property = "dockerfile.remove.skip", defaultValue = "false")
   private boolean skipRemove;
 
+  /**
+   * Allow failure.
+   */
+  @Parameter(property = "dockerfile.remove.failure.ignore", defaultValue = "false")
+  private boolean removeFailureIgnore;
+
   @Override
   protected void execute(DockerClient dockerClient)
+          throws MojoExecutionException, MojoFailureException {
+    if (removeFailureIgnore) {
+      try {
+        executeInternal(dockerClient);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else {
+      executeInternal(dockerClient);
+    }
+  }
+
+  protected void executeInternal(DockerClient dockerClient)
       throws MojoExecutionException, MojoFailureException {
     final Log log = getLog();
 

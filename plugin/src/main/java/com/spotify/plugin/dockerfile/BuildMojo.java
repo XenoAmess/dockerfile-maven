@@ -123,8 +123,27 @@ public class BuildMojo extends AbstractDockerMojo {
   @Parameter(property = "dockerfile.build.squash", defaultValue = "false")
   private boolean squash;
 
+  /**
+   * Allow failure.
+   */
+  @Parameter(property = "dockerfile.build.failure.ignore", defaultValue = "false")
+  private boolean buildFailureIgnore;
+
   @Override
-  public void execute(DockerClient dockerClient)
+  protected void execute(DockerClient dockerClient)
+          throws MojoExecutionException, MojoFailureException {
+    if (buildFailureIgnore) {
+      try {
+        executeInternal(dockerClient);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else {
+      executeInternal(dockerClient);
+    }
+  }
+
+  public void executeInternal(DockerClient dockerClient)
       throws MojoExecutionException, MojoFailureException {
     final Log log = getLog();
 

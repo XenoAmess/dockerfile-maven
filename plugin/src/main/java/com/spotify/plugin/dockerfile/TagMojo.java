@@ -63,8 +63,27 @@ public class TagMojo extends AbstractDockerMojo {
   @Parameter(property = "dockerfile.tag.skip", defaultValue = "false")
   private boolean skipTag;
 
+  /**
+   * Allow failure.
+   */
+  @Parameter(property = "dockerfile.tag.failure.ignore", defaultValue = "false")
+  private boolean tagFailureIgnore;
+
   @Override
   protected void execute(DockerClient dockerClient)
+          throws MojoExecutionException, MojoFailureException {
+    if (tagFailureIgnore) {
+      try {
+        executeInternal(dockerClient);
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    } else {
+      executeInternal(dockerClient);
+    }
+  }
+
+  protected void executeInternal(DockerClient dockerClient)
       throws MojoExecutionException, MojoFailureException {
     final Log log = getLog();
 
