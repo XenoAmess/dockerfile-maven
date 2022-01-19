@@ -5,7 +5,7 @@
   <parent>
     <artifactId>dockerfile-maven</artifactId>
     <groupId>com.xenoamess.docker</groupId>
-    <version>1.4.22-SNAPSHOT</version>
+    <version>1.4.22</version>
   </parent>
 
   <artifactId>dockerfile-maven-extension</artifactId>
