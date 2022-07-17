@@ -15,7 +15,7 @@
   <description>Adds support for building Dockerfiles in Maven</description>
 
   <properties>
-    <docker-client.version>8.17.2</docker-client.version>
+    <docker-client.version>8.17.3</docker-client.version>
     <maven.version>3.8.5</maven.version>
   </properties>
 
@@ -127,6 +127,13 @@
       <groupId>com.google.code.gson</groupId>
       <artifactId>gson</artifactId>
       <version>2.9.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>javax.ws.rs</groupId>
+      <artifactId>javax.ws.rs-api</artifactId>
+      <version>2.1.1</version>
+      <type>jar</type>
     </dependency>
 
     <dependency>

@@ -15,7 +15,7 @@
       <dependency>
         <groupId>com.xenoamess.docker</groupId>
         <artifactId>docker-client</artifactId>
-        <version>8.17.2</version>
+        <version>8.17.3</version>
         <scope>test</scope>
       </dependency>
     </dependencies>
