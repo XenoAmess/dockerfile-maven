@@ -8,14 +8,14 @@
     <version>5</version>
   </parent>
 
-  <groupId>net.triopsys.docker</groupId>
+  <groupId>com.xenoamess.docker</groupId>
   <artifactId>dockerfile-maven</artifactId>
-  <version>1.4.26-SNAPSHOT</version>
+  <version>1.4.25</version>
   <packaging>pom</packaging>
 
   <name>Dockerfile Maven Support</name>
   <description>A set of Maven tools for dealing with Dockerfiles</description>
-  <url>https://github.com/triopsys-net/dockerfile-maven</url>
+  <url>https://github.com/spotify/dockerfile-maven</url>
 
   <modules>
     <module>extension</module>
@@ -24,14 +24,10 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <!-- Used for deploying artifacts/packages to Github: -->
-    <repo.owner.id>triopsys-net</repo.owner.id>
   </properties>
 
   <scm>
-    <connection>scm:git:git@github.com:triopsys-net/dockerfile-maven.git</connection>
-    <developerConnection>scm:git:https://github.com/triopsys-net/dockerfile-maven.git</developerConnection>
-    <url>https://github.com/triopsys-net/dockerfile-maven</url>
+    <developerConnection>scm:git:https://github.com/jvanzyl/dockerfile-maven.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
 
@@ -73,39 +69,6 @@
       </plugin>
     </plugins>
   </build>
-
-  <profiles>
-    <profile>
-      <id>deploy-github</id>
-      <!-- Override distribution management from parent-pom (deploys to Maven Central) -->
-      <distributionManagement>
-        <repository>
-          <id>github</id>
-          <name>GitHub Packages</name>
-          <url>https://maven.pkg.github.com/${repo.owner.id}/${project.artifactId}</url>
-        </repository>
-        <snapshotRepository>
-          <id>github-snapshots</id>
-          <name>GitHub Packages</name>
-          <url>https://maven.pkg.github.com/${repo.owner.id}/${project.artifactId}</url>
-        </snapshotRepository>
-      </distributionManagement>
-      
-      <repositories>
-        <repository>
-          <id>github</id>
-          <name>triopsys.net docker-client repository</name>
-          <url>https://maven.pkg.github.com/${repo.owner.id}/docker-client</url>
-          <releases>
-            <enabled>true</enabled>            
-          </releases>
-          <snapshots>
-            <enabled>true</enabled>            
-          </snapshots>
-        </repository>        
-      </repositories>
-    </profile>
-  </profiles>
 
   <developers>
     <developer>

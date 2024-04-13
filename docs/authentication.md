@@ -79,7 +79,7 @@ Just add configuration similar to:
 
 ```xml
  <plugin>
-    <groupId>net.triopsys.docker</groupId>
+    <groupId>com.xenoamess.docker</groupId>
     <artifactId>dockerfile-maven-plugin</artifactId>
     <version>${version}</version>
     <configuration>
@@ -95,7 +95,7 @@ Just add configuration similar to:
 or simpler,
 ```xml
  <plugin>
-    <groupId>net.triopsys.docker</groupId>
+    <groupId>com.xenoamess.docker</groupId>
     <artifactId>dockerfile-maven-plugin</artifactId>
     <version>${version}</version>
     <configuration>

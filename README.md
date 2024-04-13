@@ -1,7 +1,7 @@
 # Dockerfile Maven
 
-[![Maven Central](https://img.shields.io/maven-central/v/net.triopsys.docker/dockerfile-maven.svg)](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22net.triopsys.docker%22%20dockerfile-maven)
-[![License](https://img.shields.io/github/license/net-triopsys/docker-client.svg)](LICENSE)
+[![Maven Central](https://img.shields.io/maven-central/v/com.xenoamess.docker/dockerfile-maven.svg)](https://search.maven.org/#search%7Cga%7C1%7Cg%3A%22com.xenoamess.docker%22%20dockerfile-maven)
+[![License](https://img.shields.io/github/license/xenoamess/dockerfile-maven.svg)](LICENSE)
 
 This Maven plugin integrates Maven with Docker.
 
@@ -34,7 +34,9 @@ See the [changelog for a list of releases][changelog]
 
 ## Set-up
 
-This plugin requires Java 8 or later and Apache Maven 3.5 or later. To run the integration tests or to use the plugin in practice, a working Docker set-up is needed.
+This plugin requires Java 7 or later and Apache Maven 3 or later (dockerfile-maven-plugin <=1.4.6 needs
+Maven >= 3, and for other cases, Maven >= 3.5.2). To run the integration tests or to use the plugin in practice, a working
+Docker set-up is needed.
 
 ## Example
 
@@ -50,7 +52,7 @@ package` and push it with `mvn deploy`.  Of course you can also say
 
 ```xml
 <plugin>
-  <groupId>net.triopsys.docker</groupId>
+  <groupId>com.xenoamess.docker</groupId>
   <artifactId>dockerfile-maven-plugin</artifactId>
   <version>${dockerfile-maven-version}</version>
   <executions>
@@ -75,10 +77,10 @@ package` and push it with `mvn deploy`.  Of course you can also say
 A corresponding `Dockerfile` could look like:
 
 ```
-FROM eclipse-temurin:17-jre-alpine
-LABEL maintainer="David Flemström <dflemstr@spotify.com>"
+FROM openjdk:8-jre
+MAINTAINER David Flemström <dflemstr@spotify.com>
 
-ENTRYPOINT ["java", "-jar", "/usr/share/myservice/myservice.jar"]
+ENTRYPOINT ["/usr/bin/java", "-jar", "/usr/share/myservice/myservice.jar"]
 
 # Add Maven dependencies (not shaded into the artifact; Docker-cached)
 ADD target/lib           /usr/share/myservice/lib
