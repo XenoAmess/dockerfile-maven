@@ -16,7 +16,7 @@
 
   <properties>
     <docker-client.version>8.19.0-SNAPSHOT</docker-client.version>
-    <maven.version>3.9.0</maven.version>
+    <maven.version>3.9.6</maven.version>
   </properties>
 
   <dependencies>
