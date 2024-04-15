@@ -51,7 +51,7 @@ jobs:
           docker version
           docker info
           docker pull testcontainers/ryuk:0.3.3
-          mvn  -Pdeploy-github --batch-mode clean install "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn"
+          mvn --batch-mode clean install "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn"
         env:
           # DEPLOY_DOCKER_PACKAGES: organization level secret for uploading to Github Packages repository.
           GITHUB_ACTOR: ${{ env.DEPLOY_DOCKER_PACKAGES_USER}}
